@@ -1,0 +1,2 @@
+# cscsd
+Covid Statistics Displayer
