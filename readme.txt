@@ -13,7 +13,9 @@ This data include the graphics that are generated each day by a R script and an 
 The data server keep an ip address list for statistic and security purpose only.
 This plugin doesn't send any of your website data or any personal information to me or to anyone.
 It just display daily statistics and use a simple prevision tool.
-The previsions are only informational and may be wrong.
+All the data used to create graphics come from the COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University :
+https://github.com/CSSEGISandData/COVID-19
+The previsions and data are only informational and may be wrong.
 All the php and R code will soon be available so you can modify and do whatever you want with it.
 Thanks for the interest that you put in my project.
 
