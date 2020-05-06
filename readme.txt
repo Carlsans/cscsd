@@ -10,7 +10,7 @@ This plugin allow you to display the latest covid statistics and previsions for 
 
 Note that this plugin use third party data from my website.
 This data include the graphics that are generated each day by a R script and an up to date list of all the country, states/provinces and city.
-I don't keep any statistics or ip address list when the files are fetched on my server.
+The data server keep an ip address list for statistic and security purpose only.
 This plugin doesn't send any of your website data or any personal information to me or to anyone.
 It just display daily statistics and use a simple prevision tool.
 The previsions are only informational and may be wrong.
