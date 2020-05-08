@@ -178,7 +178,7 @@ function cscsdremove_http($url) {
 }
 
 /*
-function does_url_exists($url) {
+function cscsddoes_url_exists($url) {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_NOBODY, true);
     curl_exec($ch);
