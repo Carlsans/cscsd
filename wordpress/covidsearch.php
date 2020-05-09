@@ -208,11 +208,11 @@ return $status;
 
 <?php
 cscsdgetdatabasefromjson();
-$cssautocomplete = plugin_dir_url( __DIR__ ) . 'covid-stats/css/autocomplete.css';
-$cssadaptative = plugin_dir_url( __DIR__ ) . 'covid-stats/css/adaptivetable.css';
+$cssautocomplete = plugin_dir_url( __DIR__ ) . 'covid-19-statistics-displayer/css/autocomplete.css';
+$cssadaptative = plugin_dir_url( __DIR__ ) . 'covid-19-statistics-displayer/css/adaptivetable.css';
 $activepage = get_permalink();
 
-$jspath =  plugin_dir_url( __DIR__ ) . 'covid-stats/js/autocomplete.js';
+$jspath =  plugin_dir_url( __DIR__ ) . 'covid-19-statistics-displayer/js/autocomplete.js';
 wp_enqueue_script(
         'csautocomplete',
         $jspath
