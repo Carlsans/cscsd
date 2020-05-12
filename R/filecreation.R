@@ -7,7 +7,7 @@ print(ftppath)
 
   ftpUpload(myfile,
             ftppath,
-            userpwd = "ftpgraphs@moduloinfo.ca:dD1477731bi"
+            userpwd = "ftpgraphs@moduloinfo.ca:mypassword"
   )
 }
 
