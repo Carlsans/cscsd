@@ -6,7 +6,7 @@ function cscsdgettablename(){
 
 
 function cscsdgetdatabasefromjson(){
-  $response = wp_remote_get( 'http://moduloinfo.ca/covid/graphs/csclist.json' );
+  $response = wp_remote_get( 'http://moduloinfo.ca/covid/graphs/lastmodified.txt' );
   $last_modified = wp_remote_retrieve_header( $response, 'last-modified' );
   if (!get_option( 'cscsdlast_downloaded' )){
     add_option( 'cscsdlast_downloaded', $last_modified );
@@ -18,6 +18,8 @@ function cscsdgetdatabasefromjson(){
     }
 
   }
+  $response = wp_remote_get( 'http://moduloinfo.ca/covid/graphs/csclist.json' );
+
   $body = wp_remote_retrieve_body( $response );
   $data = json_decode($body,true);
   global $wpdb;
