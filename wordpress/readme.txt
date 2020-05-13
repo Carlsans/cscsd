@@ -3,11 +3,13 @@ Requires at least: 5.4.1
 Requires PHP: 2.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-This plugin allow you to display the latest covid statistics and previsions for the entire world using [covidstats] shortcode on the page where you want the stats to display.
+Contributors: carlsansfa
+Tags: covid, covid-19, statistic
+Tested up to: 5.4.1
+Stable tag: 1.1
 
 == Description ==
-
+This plugin allow you to display the latest covid statistics and previsions for the entire world using [covidstats] shortcode on the page where you want the stats to display.
 Note that this plugin use third party data from my website.
 This data include the graphics that are generated each day by a R script and an up to date list of all the country, states/provinces and city.
 The data server keep an ip address list for statistic and security purpose only.
@@ -23,3 +25,13 @@ The png graphic pages and json file can be accessed in this folder : http://modu
 Link to my privacy policy : http://moduloinfo.ca/wordpress/privacy-policy/
 == Installation ==
 Add the [covidstats] shortcode to your page.
+
+== Screenshots ==
+1. What it look like
+2. How to install
+
+
+== Changelog ==
+1.1 Change log
+- Recovered graphics don\'t show up anymore if there is no data
+- More efficient data integration to reduce server load
