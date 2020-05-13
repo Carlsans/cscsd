@@ -7,6 +7,17 @@ function cscsdgettablename(){
 
 function cscsdgetdatabasefromjson(){
   $response = wp_remote_get( 'http://moduloinfo.ca/covid/graphs/csclist.json' );
+  $last_modified = wp_remote_retrieve_header( $response, 'last-modified' );
+  if (!get_option( 'cscsdlast_downloaded' )){
+    add_option( 'cscsdlast_downloaded', $last_modified );
+  }else{
+    if(get_option( 'cscsdlast_downloaded' ) == $last_modified){
+      return;
+    }else{
+    update_option( 'cscsdlast_downloaded' , $last_modified );
+    }
+
+  }
   $body = wp_remote_retrieve_body( $response );
   $data = json_decode($body,true);
   global $wpdb;
@@ -277,11 +288,11 @@ if (cscsdiscountry($country)){
 
       echo("<div class='Rtable-cell'><center><img src='".$file."Deathsdiff.png".cscsdimagenocache()."'></center></div>");
 
+        if (cscsddoes_url_exists($file."Recovered.png")){
+        echo("<div class='Rtable-cell'><center><img src='".$file."Recovered.png".cscsdimagenocache()."'></center></div>");
 
-      echo("<div class='Rtable-cell'><center><img src='".$file."Recovered.png".cscsdimagenocache()."'></center></div>");
-
-      echo("<div class='Rtable-cell'><center><img src='".$file."Recovereddiff.png".cscsdimagenocache()."'></center></div>");
-
+        echo("<div class='Rtable-cell'><center><img src='".$file."Recovereddiff.png".cscsdimagenocache()."'></center></div>");
+        }
       echo("</div>");
       }else{
         echo("<br /><h2>No prediction available for $country now come back a few day later</h2>");
@@ -307,8 +318,10 @@ if (cscsdisstate($state)){
     echo("<div class='Rtable-cell'><center><img src='".$file."Confirmeddiff.png".cscsdimagenocache()."'></center></div>");
     echo("<div class='Rtable-cell'><center><img src='".$file."Deaths.png".cscsdimagenocache()."'></center></div>");
     echo("<div class='Rtable-cell'><center><img src='".$file."Deathsdiff.png".cscsdimagenocache()."'></center></div>");
-    echo("<div class='Rtable-cell'><center><img src='".$file."Recovered.png".cscsdimagenocache()."'></center></div>");
-    echo("<div class='Rtable-cell'><center><img src='".$file."Recovereddiff.png".cscsdimagenocache()."'></center></div>");
+    if (cscsddoes_url_exists($file."Recovered.png")){
+      echo("<div class='Rtable-cell'><center><img src='".$file."Recovered.png".cscsdimagenocache()."'></center></div>");
+      echo("<div class='Rtable-cell'><center><img src='".$file."Recovereddiff.png".cscsdimagenocache()."'></center></div>");
+    }
     echo("</div>");
     }else
     {
@@ -337,8 +350,10 @@ if (cscsdiscity($city)){
     echo("<div class='Rtable-cell'><center><img src='".$file."Confirmeddiff.png".cscsdimagenocache()."'></center></div>");
     echo("<div class='Rtable-cell'><center><img src='".$file."Deaths.png".cscsdimagenocache()."'></center></div>");
     echo("<div class='Rtable-cell'><center><img src='".$file."Deathsdiff.png".cscsdimagenocache()."'></center></div>");
-    echo("<div class='Rtable-cell'><center><img src='".$file."Recovered.png".cscsdimagenocache()."'></center></div>");
-    echo("<div class='Rtable-cell'><center><img src='".$file."Recovereddiff.png".cscsdimagenocache()."'></center></div>");
+    if (cscsddoes_url_exists($file."Recovered.png")){
+      echo("<div class='Rtable-cell'><center><img src='".$file."Recovered.png".cscsdimagenocache()."'></center></div>");
+      echo("<div class='Rtable-cell'><center><img src='".$file."Recovereddiff.png".cscsdimagenocache()."'></center></div>");
+    }
     echo("</div>");
     } else {
        echo("<br /><h2>No prediction available for $city now come back a few day later</h2>");
