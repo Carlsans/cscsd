@@ -1,6 +1,6 @@
 === Covid-19 Statistics Displayer ===
-Requires at least: 5.4.1
-Requires PHP: 2.5.0
+Requires at least: 2.5
+Requires PHP: 5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Contributors: carlsansfa
