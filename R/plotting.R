@@ -128,12 +128,20 @@ plotcoviddata <- function(dataframe, where, scope = "World",type = "Confirmed", 
     plottimeserie(df_ts, graphtype,type,where,filename = myfilename)
   } else if(scope == "Country"){
     filteredf <- dataframe %>% filter(Country.Region == where)
+    if(!isrecoveredpresent(filteredf) && (type == "Recovered" || type == "Recovereddiff")){
+      #afilename = paste(sep="",myfilename,type,".png")
+      #createblankfile(afilename)
+      return()
+    }
+   
+    #print(dt[])eval(as.symbol(type))
     if(nrow(filteredf) <= 2){
       print("Only two row or less. Can't draw")
       return()
     }
     dt <- data.table(filteredf)
     dt2 <- dt[,list(mytype = sum(eval(as.symbol(type))), freq = .N), by = c("date")]
+    
     names(dt2)[names(dt2) == 'mytype'] <- type
     filteredf <- na.omit(setDF(dt2))
     df_ts <- xts(x = filteredf[type], order.by = filteredf$date )
@@ -146,9 +154,15 @@ plotcoviddata <- function(dataframe, where, scope = "World",type = "Confirmed", 
     if(myfilename==""){
       afilename=""
     }
+    
     plottimeserie(df_ts, graphtype,type,where,filename = afilename)
   } else if(scope == "State") {
     filteredf <- dataframe %>% filter(Province.State == where)
+    if(!isrecoveredpresent(filteredf) && (type == "Recovered" || type == "Recovereddiff")){
+      #afilename = paste(sep="",myfilename,type,".png")
+      #createblankfile(afilename)
+      return()
+    }
     if(nrow(filteredf) <= 2){
       print("Only two row or less. Can't draw")
       return()
@@ -171,6 +185,9 @@ plotcoviddata <- function(dataframe, where, scope = "World",type = "Confirmed", 
     plottimeserie(df_ts, graphtype,type,where,filename = afilename)
     
   } else if(scope == "City") {
+    if(type == "Recovered" || type == "Recovereddiff"){
+      return()
+    }
     allstates <- sqldf(paste(sep = "","SELECT DISTINCT [Province.State] FROM dataframe WHERE Admin2 ='",gsub("'", "''", where),"'"))
     for(state in allstates$Province.State ){
        print(state) 
@@ -195,6 +212,7 @@ plotcoviddata <- function(dataframe, where, scope = "World",type = "Confirmed", 
         if(myfilename==""){
           afilename=""
         }
+       
         plottimeserie(df_ts, graphtype,type,where,wherestate = state ,filename = afilename)
       } 
   }
@@ -202,4 +220,17 @@ plotcoviddata <- function(dataframe, where, scope = "World",type = "Confirmed", 
   else{
     print("The scope must be : World, Country, State or City")  
   }
+}
+
+isrecoveredpresent <- function(mydataframe){
+  testdf <- mydataframe %>% filter(Recovered != 0)
+  if(nrow(testdf) == 0){
+    return(FALSE)
+  }else{
+    return(TRUE)
+  }
+}
+createblankfile <- function(filename){
+  file.create(filename)  
+  
 }
