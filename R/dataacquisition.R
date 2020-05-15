@@ -49,6 +49,7 @@ downloadlatestdata <- function(today = FALSE){
     
     theDate <- theDate + 1                    
   }
+  data$Country.Region <- gsub('\\*', '', data$Country.Region)
   data <- distinct(data)
   #data$Confirmed[is.na(data$Confirmed)] <- 0
   return(data)
