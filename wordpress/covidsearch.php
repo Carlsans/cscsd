@@ -221,23 +221,23 @@ return $status;
 
 <?php
 cscsdgetdatabasefromjson();
-$cssautocomplete = plugin_dir_url( __DIR__ ) . 'covid-19-statistics-displayer/css/autocomplete.css';
-$cssadaptative = plugin_dir_url( __DIR__ ) . 'covid-19-statistics-displayer/css/adaptivetable.css';
+//$cssautocomplete = plugin_dir_url( __DIR__ ) . 'covid-19-statistics-displayer/css/autocomplete.css';
+//$cssadaptative = plugin_dir_url( __DIR__ ) . 'covid-19-statistics-displayer/css/adaptivetable.css';
 $activepage = get_permalink();
-
+/*
 $jspath =  plugin_dir_url( __DIR__ ) . 'covid-19-statistics-displayer/js/autocomplete.js';
 wp_enqueue_script(
         'csautocomplete',
         $jspath
-    );
-wp_enqueue_style(
+    );*/
+/*wp_enqueue_style(
         'csautocomplete',
         $cssautocomplete
 );
 wp_enqueue_style(
         'csadapatative',
         $cssadaptative
-);
+);*/
 ?>
 
 <script type="text/javascript">
@@ -276,7 +276,7 @@ if(isset($_GET['myCountry']) && !empty($_GET['myCountry'])) {
 $basedir = "http://moduloinfo.ca/covid/graphs/country";
 $country = sanitize_text_field($_GET['myCountry']);
 if (cscsdiscountry($country)){
-  clearstatcache();
+  //clearstatcache();
   $file = esc_url($basedir.cscsdfixbadchars($country));
   //echo($file.'Confirmed.png');
   //echo(does_url_exists($file.'Confirmed.png'));
