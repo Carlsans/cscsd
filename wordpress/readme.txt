@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Contributors: carlsansfa
 Tags: covid, covid-19, statistic
 Tested up to: 5.4.1
-Stable tag: 1.1
+Stable tag: 1.2
 
 == Description ==
 This plugin allow you to display the latest covid statistics and previsions for the entire world using [covidstats] shortcode on the page where you want the stats to display.
@@ -32,6 +32,9 @@ Add the [covidstats] shortcode to your page.
 
 
 == Changelog ==
+1.2 Change log
+- Better shortcode integration
+
 1.1 Change log
 - Recovered graphics don\'t show up anymore if there is no data
 - More efficient data integration to reduce server load
